@@ -8,7 +8,7 @@ ip_,time_start,time_end=None,timedelta.min,timedelta.max
 time_elapsed = timedelta.min
 
 for line in input_stream:
-    ip, time = line.strip().split(',',2)
+    ip, date, time = line.strip().split(',', 3)
     
     ip_ = ip if not ip_ else ip_
     hour, mint, secs = tuple(map(int,time.strip().split(":",3)))
