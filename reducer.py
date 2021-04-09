@@ -1,38 +1,51 @@
 #!/usr/bin/python3
 
 from sys import stdin as input_stream
-from datetime import timedelta
-from math import ceil
+from time import strptime
 
-ip_,time_start,time_end=None,timedelta.min,timedelta.max
-time_elapsed = timedelta.min
+ip_, date_ = None, None
+total_time = 0
+hour_, mint_ = None, None
 
 for line in input_stream:
-    ip, time = line.strip().split(',',2)
-    
+
+    # get < key,<value> > pairs
+    ip, date, time = line.strip().split(',', 3)
+
+    # parse ip,date,time to variables
     ip_ = ip if not ip_ else ip_
-    hour, mint, secs = tuple(map(int,time.strip().split(":",3)))
-    
-    if ip == ip_ and time_start == timedelta.min:
-        time_start = timedelta(hours=hour,minutes=mint,seconds=secs)
-    elif ip == ip_:
-        time_end = timedelta(hours=hour,minutes=mint,seconds=secs)
-    else:
-        if ip != ip_:
-            # Calculate time elapsed for User w/ this IP address
-            time_elapsed = (time_end - time_start).total_seconds()
-            time_elapsed = ceil(time_elapsed / 60) if time_elapsed > 0 else 1
-            # Write result to stdout
-            print("%s\t%d" %(ip_, time_elapsed))
-            ip_,time_start = ip,timedelta(hours=hour,minutes=mint,seconds=secs)
-            time_end = timedelta(hours=hour,minutes=mint,seconds=secs)
+    date_, date = strptime(
+        date, "%Y-%m-%d") if not date_ else date_, strptime(date, "%Y-%m-%d")
+    hour, mint, _ = time.strip().split(":", 3)
+
+    # intraday_time : minutes onsite for every distinct date (default 1)
+    if ip == ip_:
+        # in case hour is not initialized
+        if not hour_:
+            hour_, mint_, intraday_time = hour, mint, 1
+        elif date == date_:
+            # add 1 minute to intraday time if new entry has the same hour AND different minute
+            # add 1 minute to intraday time if new entry has a different hour
+            intraday_time = intraday_time + \
+                1 if (hour == hour_ and mint !=
+                      mint_) or hour != hour_ else intraday_time
+            # update global hour_ and mint_ with the current values
+            hour_, mint_ = hour, mint
+        elif date > date_:
+            # date changed; add previous day's time to total time for this specific ip address
+            total_time += intraday_time
+            # update time
+            hour_, mint_, intraday_time, date_ = hour, mint, 1, date
         else:
-            pass        
-        
+            pass
+    else:
+        # new IP address
+        total_time += intraday_time
+        # emit output
+        print("%s\t%d" % (ip_, total_time if total_time else 1))
+        # reset variables after output is emitted
+        ip_, hour_, mint_, total_time, intraday_time, date_ = ip, hour, mint, 0, 1, date
+
+# handle the last input line
 if ip == ip_:
-    time_end = timedelta(hours=hour,minutes=mint,seconds=secs)
-    time_elapsed = (time_end - time_start).total_seconds()
-    time_elapsed = ceil(time_elapsed / 60) if time_elapsed > 0 else 1
-    print("%s\t%d" %(ip_, time_elapsed))
-    
-    
+    print("%s\t%d" % (ip_, total_time+intraday_time))
