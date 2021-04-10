@@ -3,9 +3,8 @@
 from sys import stdin as input_stream
 from time import strptime
 
-ip_, date_ = None, None
+ip_, date_, hour_, mint_ = None, None, None, None
 total_time = 0
-hour_, mint_ = None, None
 
 for line in input_stream:
 
