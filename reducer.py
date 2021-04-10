@@ -3,7 +3,7 @@
 from sys import stdin as input_stream
 from time import strptime
 
-ip_, date_, hour_, mint_ = None, None, None, None
+ip_, date_, hour_ = None, None, None
 total_time = 0
 
 for line in input_stream:
@@ -38,10 +38,8 @@ for line in input_stream:
         else:
             pass
     else:
-        # new IP address
-        total_time += intraday_time
-        # emit output
-        print("%s\t%d" % (ip_, total_time if total_time else 1))
+        # new ip address, emit previous ip
+        print("%s\t%d" % (ip_, total_time+intraday_time))
         # reset variables after output is emitted
         ip_, hour_, mint_, total_time, intraday_time, date_ = ip, hour, mint, 0, 1, date
 
