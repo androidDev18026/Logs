@@ -31,6 +31,6 @@ for line in sys.stdin:
     p_time = time if not p_time else p_time
         
     if valid(ip) and distinct(ip,p_date,date,p_time,time):
-        print("%s,%s" %(ip,''.join(date.replace('-','')+time[:5].replace(':','')))) 
+        print("%s,%s" %(ip,''.join(date[8:10]+time[:5].replace(':','')))) 
         p_date, p_time = date, time
     
