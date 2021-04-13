@@ -104,14 +104,14 @@
       -reducer reducer.py \
       -input logfiles \
       -output cluster_r4_3
-      <hr />
+      
       ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
       -numReduceTasks 4 \
       -mapper mapper.py \
       -reducer reducer.py \
       -input logfiles \
       -output cluster_r4_4
-      <hr />
+      
       ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
       -numReduceTasks 4 \
       -mapper mapper.py \
