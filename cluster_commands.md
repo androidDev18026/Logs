@@ -18,25 +18,29 @@
       -reducer reducer.py \
       -input logfiles \
       -output cluster_r1_1
-2. ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
+      
+      ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
       -numReduceTasks 1 \
       -mapper mapper.py \
       -reducer reducer.py \
       -input logfiles \
       -output cluster_r1_2
-3. ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
+      
+      ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
       -numReduceTasks 1 \
       -mapper mapper.py \
       -reducer reducer.py \
       -input logfiles \
       -output cluster_r1_3
-4. ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
+      
+      ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
       -numReduceTasks 1 \
       -mapper mapper.py \
       -reducer reducer.py \
       -input logfiles \
       -output cluster_r1_4
-5. ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
+      
+      ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
       -numReduceTasks 1 \
       -mapper mapper.py \
       -reducer reducer.py \
@@ -45,13 +49,14 @@
 
 ### 5 εκτελέσεις με 2 Reducer Tasks
 
-1. ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
+      ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
       -numReduceTasks 2 \
       -mapper mapper.py \
       -reducer reducer.py \
       -input logfiles \
       -output cluster_r2_1
-2. ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
+      
+      ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
       -numReduceTasks 2 \
       -mapper mapper.py \
       -reducer reducer.py \
