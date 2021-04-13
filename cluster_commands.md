@@ -8,9 +8,11 @@
 
 ## Για τις δοκιμές (15 εκτελέσεις συνολικά)
 
+### Ελέγχουμε αν βρισκόμαστε στον κατάλογο `cluster` με `pwd` => Αναμενόμενο αποτέλεσμα `/home/user/cluster`
+
 ### 5 εκτελέσεις με 1 Reducer Task
 
-1. ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \ 
+1. ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py\ 
       -numReduceTasks 1 \
       -mapper mapper.py \
       -reducer reducer.py \
