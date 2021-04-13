@@ -12,7 +12,7 @@
 
 ### 5 εκτελέσεις με 1 Reducer Task
 
-1. ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py\ 
+1. ~/hadoop/bin/hadoop jar ~/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.1.jar -files mapper.py,reducer.py \
       -numReduceTasks 1 \
       -mapper mapper.py \
       -reducer reducer.py \
