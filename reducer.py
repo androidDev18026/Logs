@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
-import itertools
-import operator
 import sys
+from operator import itemgetter
+from itertools import groupby
 
 
 def read_input():
@@ -11,6 +11,5 @@ def read_input():
         yield ip, date
 
 
-for group in itertools.groupby(read_input(), operator.itemgetter(0)):
-    print("%s\t%s" %(group[0],len(set(map(operator.itemgetter(1), group[1])))))
-
+for ip,date in groupby(read_input(), itemgetter(0)):
+    print("%s\t%s" %(ip,len(set(map(itemgetter(1), date)))))
