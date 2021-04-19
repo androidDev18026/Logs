@@ -9,4 +9,4 @@ for line in sys.stdin:
     ip, date, time = line.strip().split(',')[:3]
     
     if valid_ip.match(ip):
-        print ("%s,%s" %(ip, ''.join(date[-2:]+time[:5].replace(':',''))))
+        print ("%s,%s" %(ip, ''.join(date.replace('-','')+time[:5].replace(':',''))))
