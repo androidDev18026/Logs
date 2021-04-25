@@ -13,3 +13,4 @@ def read_input():
 
 for ip,date in groupby(read_input(), itemgetter(0)):
     print("%s\t%s" %(ip,len(set(map(itemgetter(1), date)))))
+    
